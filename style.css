@@ -1,0 +1,428 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+body{
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   background-image: url("imagies/wallpaperflare.com_wallpaper\ \(23\).jpg");
+   min-height: 100vh;
+   width: 100vw;
+   background-position:center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   backdrop-filter: brightness(0.3);
+}
+
+
+
+
+#header{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 10%;
+    font-size: 20px;
+    
+}
+
+
+#Head-branch{
+    display: flex;
+    gap: 25px;
+    cursor: pointer;
+    flex-wrap: nowrap;
+}
+
+#Head-branch a{
+    position: relative;
+}
+
+#Head-branch a::before{
+    content: '';
+    position:absolute;
+    bottom: -10px;
+    left:0;
+    width: 0%;
+    height: 3px;
+    background-color: aliceblue;
+    transition: all 0.5s;
+}
+
+#Head-branch a:hover::before{
+    width: 100%;
+}
+
+
+#mood{
+    font-size: 25px;
+}
+
+
+#mood:hover{
+    cursor: pointer;
+   background-color: brown;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; 
+}
+
+.p-intro{
+    color: rgb(162, 26, 2);
+    backdrop-filter: blur(20px);
+}
+
+ul{
+    list-style: none;
+    color: white;
+}
+
+
+summary{
+    cursor: pointer;
+}
+
+#summary-div{
+    background-color: #4e4e4e;
+}
+
+#summary-div p:hover{
+    background-color: #777777;
+    cursor: pointer;
+}
+
+
+#intro{
+   display: flex;
+   margin: 10% 15%;
+   color: white;
+}
+
+#intro h1,h2{
+    font-size: 60px;
+}
+
+#intro p{
+    font-size: 50px;
+}
+
+
+
+
+#data h1{
+    font-size: 40px;
+}
+
+#data h2{
+    background: linear-gradient(90deg,#cea27d,#6ce5f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; 
+}
+
+#country-city {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 30vh;
+    backdrop-filter: blur(15px);
+    border: 2px solid orange;
+    background-color: rgba(255, 255, 255, 0.5); 
+    padding: 20px;
+    display: none; 
+  }
+  
+  #country-city.show {
+    display: block; 
+  }
+
+#country-city input{
+    width: 95%;
+    height: 30px;
+    border-radius: 4px;
+     padding-left: 10px; 
+    outline: none;
+    margin: 10px 0;
+    box-shadow:5px 10px 7px #888888;
+}
+
+
+#input-country{
+    font-size: 50px;
+    background: linear-gradient(white,rgb(237, 145, 25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+}
+
+
+#input-city{
+    font-size: 120px;
+    background: linear-gradient(rgb(237, 145, 25),brown);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#location{
+    margin: 5% 10%;
+}
+
+#location p{
+    font-size: 30px;
+    color: white;
+    padding: 0 50px;
+}
+
+#lower-page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+#data{
+    margin: 0 10%;
+}
+
+
+#main2{
+    display: none;
+}
+
+
+.prayers{
+    display: flex;
+    flex-direction:column;
+    width: 140px;
+    height: 100px;
+    border-radius: 2px;
+    margin: 10px 0;
+    text-shadow: 3px 4px grey;
+    box-shadow:3px 4px 8px grey;
+    text-align: center;
+}
+
+.pray-name{
+    background-color: #cea27d;
+    width: 100%;
+    height: 40px;
+    color: #0a0f1d;
+}
+
+.pray-name h1{
+    font-size: 30px;
+}
+
+
+.pray-time{
+    background-color:#c3b1a4;
+    width: 100%;
+    height: 60px;
+   
+}
+
+
+.pray-time h3{
+    font-size:30px;
+} 
+
+
+
+#Country-select,#city-select{
+    box-shadow: 5px 5px 4px grey;
+    background-color: rgb(238, 233, 233);
+}
+
+#find-prayer-times-btn{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    color: rgb(25, 25, 56);
+}
+
+#title{
+    cursor: pointer;
+}
+
+#quaran{
+    display: flex;
+    justify-content: center;
+}
+
+#quaran h2{
+    color: white;
+    font-size: 30px;
+}
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup-content {
+    backdrop-filter: blur(50px);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888888;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.popup-content h5{
+    color: white;
+    font-size: 20px;
+}
+
+.popup-content button{
+    width: 25%;
+    height: 25px;
+    border-radius: 2px;
+    border: orange solid 1px;
+    cursor: pointer;
+}
+
+.popup-content button:hover{
+    background-color: rgb(249, 163, 3);
+    color: white;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+#reminig-time{
+    padding: 0 50px; 
+     color: white;
+      margin: 20px 0;
+}
+
+#reminig-time h3{
+    font-size: 30px;
+}
+
+#reminig-time h4{
+    font-size: 20p
+}
+
+
+@media (max-width:350px){
+
+
+    #header{
+        gap: 3%;
+        font-size: 15px;
+    }
+
+    #data{
+        margin: 5% 5%;
+    }
+
+    #intro h1,h2{
+        font-size: 40px;
+    }
+    
+    #intro p{
+        font-size: 30px;
+    }
+
+    #country-city {
+        height: auto;
+        width: 100%;
+      }
+
+      #country-city input{
+        box-shadow:none;
+    }
+
+    #right-side{
+        gap: 30px;
+    }
+
+    .prayers{
+        width: 140px;
+        margin: 0;
+    }
+
+    #input-city{
+        font-size: 60px;
+    }
+
+    #input-country{
+        font-size: 40px;
+    }
+
+
+}
+
+
+@media (min-width:351px) and (max-width:600px){
+
+    #country-city {
+        height: auto;
+        width: 70%;
+      }
+}
+
+@media (min-width:601px) and (max-width:900px) {
+    
+    #country-city {
+        height: auto;
+        width: 40%;
+      }
+}
+
+@media (min-width:901px) and (max-width:1300px){
+
+    #country-city {
+        height: auto;
+        width: 30%;
+      }
+}
+
+@media (min-width:1301px) and (max-width:1500px){
+
+    #country-city {
+        height: auto;
+        width: 20%;
+      }
+}

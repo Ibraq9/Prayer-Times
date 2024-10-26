@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times</title>
+    <link rel="stylesheet" href="style.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+    <header id="header" >
+
+        <div>
+        <h1 id="title">Muslims</h1>
+        </div>
+
+        <div id="Head-branch">
+        <a id="prayer-times">Prayer Times</a>
+        </div>
+
+        <div id="mood">
+            <a id="a-mood"><i class="fa-solid fa-moon"></i></a>
+        </div>
+
+    </header>
+
+
+
+
+    <section id="main">
+        
+       <div id="intro">
+        <div id="data">
+            <h1 id="Muslims-website-dis">Muslims Website</h1>
+            <p id="for-dis">for</p>
+            <h2 id="prayer-times-dis">Prayer times</h2>
+        </div>
+       </div>
+         
+
+       <div id="quaran" dir="rtl">
+        <h2>﴿ وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ ﴾ [البقرة: 45]</h2>
+       </div>
+
+    </section>
+
+
+     <!--Popup-->
+    <div id="country-city">
+        <h3 id="enter-c-c">Enter Your Country and city</h3>
+        <div style="width: 100%;">
+            <select  onclick="get_Country()" style="width: 95%; height: 40px; border-radius: 10px; margin-bottom: 10px; margin-top: 20px;" id="Country-select">
+                <option value="" disabled selected>Select your Country</option>
+            </select>
+        </div>
+        <div style="width: 100%; height: 40px;">
+            <select style="width: 95%; height: 40px; border-radius: 10px;" id="city-select">
+                <option value="" disabled selected>Select your City</option>
+            </select>
+        </div>
+        
+
+        <div id="find-prayer-times-btn">
+            <a onclick="get_prayer_times()"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+     </div>
+     <!--Popup-->
+
+
+
+     <!--popup-->
+     <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h5>Welcome! Choose Language</h2>
+            <button onclick="Arabic()">العربية</button>
+            <button onclick="English()">English</button>
+        </div>
+    </div>
+     <!--Popup-->
+
+
+
+
+
+
+    <section id="main2">
+
+        <div id="Upper-page">
+            <div id="location">
+                <div>
+                    <h1 id="input-country"></h1>
+                    <h3 id="input-city"></h3>
+                    <div id="date-clock">
+                        <p id="date-"></p>
+                        <p id="today"></p>
+                    </div>
+                </div>
+               
+               
+                <!-- <div id="reminig-time">
+                    <h4 id="nextPrayer">time remining for Asr </h4>
+                    <h3 id="remining-time"> 3:05:30</h3>
+                </div> -->
+             </div>    
+        </div>
+
+
+        <div id="lower-page">
+
+            <div class="prayers">
+                <div class="pray-name">
+                    <h1 id="fagr-name">Fagr</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Fagr-time"></h3>
+                </div>
+
+            </div>
+
+
+            <div class="prayers">
+
+                <div class="pray-name">
+                    <h1 id="sunrise-name">Sunrise</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Sunrise-time"></h3>
+                </div>
+
+            </div>
+
+            <div class="prayers">
+
+                <div class="pray-name">
+                    <h1 id="dhuhr-name">Dhuhr</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Dhuhr-time"></h3>
+                </div>
+
+            </div>
+
+            <div class="prayers">
+
+                <div class="pray-name">
+                    <h1 id="asr-name">Asr</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Asr-time"></h3>
+                </div>
+
+            </div>
+
+
+            <div class="prayers">
+
+                <div class="pray-name">
+                    <h1 id="maghrib-name">Maghrib</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Maghrib-time"></h3>
+                </div>
+
+            </div>
+
+            <div class="prayers">
+
+                <div class="pray-name">
+                    <h1 id="isha-name">Isha</h1>
+                </div>
+                <div class="pray-time">
+                    <h3 id="Isha-time"></h3>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script src="code.js"></script>
+    
+</body>
+</html>
