@@ -70,13 +70,28 @@ let lower_page=document.getElementById("lower-page");
 let today=document.getElementById("today");
 
 
+
 title.onclick=()=>{
   window.location.reload(true)
 }
 
 
 
-
+window.onload = function() {
+  
+    popup.style.display = "block";
+  
+    closeBtn.onclick = function() {
+        popup.style.display = "none";
+    }
+  
+    window.onclick = function(event) {
+        if (event.target === popup) {
+            popup.style.display = "none";
+        }
+    }
+  };
+  
 
 
 
@@ -130,18 +145,54 @@ prayer_times.addEventListener('click', () => {
 
 
 
-
 Country_select.addEventListener("change", (event) => {
   let countryChange = event.target.value;
   city_select.options.length="";
-    get_cities(countryChange);
-  });
+  get_cities(countryChange);
+ });
 
 
 
 
 
+  function get_Country() {
+    fetch("https://countriesnow.space/api/v0.1/countries")
+      .then(response => response.json())
+      .then(data => {
+        let countries = data.data;
+        countries.forEach(country => {
+          let options = document.createElement("option");
+          options.value = country.country;
+          options.innerHTML = country.country;
+          Country_select.appendChild(options);
+       });
+      })
+      .catch(error => console.error("Error fetching countries:", error));
+  }
    
+
+
+
+  function get_cities(Country) {
+    fetch("https://countriesnow.space/api/v0.1/countries/cities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ "country": Country })
+    })
+      .then(response => response.json())
+      .then(data => {
+        let cities = data.data;
+        cities.forEach(city => {
+          let options = document.createElement("option");
+          options.value = city;
+          options.innerHTML = city;
+          city_select.appendChild(options);
+        });
+      })
+      .catch(error => console.error("Error fetching cities:", error));
+  }
 
 
 
@@ -157,10 +208,10 @@ function get_prayer_times() {
   main.style.display = "none";
   main2.style.display = "block";
 
-  fetch(`http://api.aladhan.com/v1/timingsByCity?city=${city1}&country=${country1}`)
+  fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city1}&country=${country1}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+     
       let times = data.data.timings;
 
       if (check_lang === "arabic") {
@@ -170,7 +221,7 @@ function get_prayer_times() {
         asr_name.innerHTML = "العصر";
         maghrib_name.innerHTML = "المغرب";
         isha_name.innerHTML = "العشاء";
-        lower_page.dir = "rtl";
+       
         today.innerHTML=data.data.date.hijri.weekday.ar;
       } else {
         fagr_name.innerHTML = "Fagr";
@@ -179,7 +230,7 @@ function get_prayer_times() {
         asr_name.innerHTML = "Asr";
         maghrib_name.innerHTML = "Maghrib";
         isha_name.innerHTML = "Isha";
-        lower_page.dir = "ltr";
+       
         today.innerHTML=data.data.date.hijri.weekday.en;
       }
 
@@ -209,6 +260,8 @@ let popup = document.getElementById("popup");
 let closeBtn = document.getElementById("closeBtn");
 
 function Arabic(){
+
+  lower_page.dir = "rtl";
 
   // check open popup or close
  if(popup.style.display==="block"){
@@ -260,6 +313,8 @@ function Arabic(){
 
 function English() {
 
+  lower_page.dir = "ltr";
+
   // check open popup or close
  if(popup.style.display==="block"){
   popup.style.display="none";
@@ -294,74 +349,6 @@ function English() {
 };
 
 
-
-
-
-
-function get_Country() {
-  fetch("https://countriesnow.space/api/v0.1/countries")
-    .then(response => response.json())
-    .then(data => {
-      let countries = data.data;
-      countries.forEach(country => {
-        let options = document.createElement("option");
-        options.value = country.country;
-        options.innerHTML = country.country;
-        Country_select.appendChild(options);
-      });
-      city_select.onclick = () => {
-        get_cities(Country_select.value);
-      }
-    })
-    .catch(error => console.error("Error fetching countries:", error));
-}
-
-
-
-
-
-
-
-
-function get_cities(Country) {
-  fetch("https://countriesnow.space/api/v0.1/countries/cities", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ "country": Country })
-  })
-    .then(response => response.json())
-    .then(data => {
-      let cities = data.data;
-      cities.forEach(city => {
-        let options = document.createElement("option");
-        options.value = city;
-        options.innerHTML = city;
-        city_select.appendChild(options);
-      });
-    })
-    .catch(error => console.error("Error fetching cities:", error));
-}
-
-
-
-
-
-window.onload = function() {
-  
-  popup.style.display = "block";
-
-  closeBtn.onclick = function() {
-      popup.style.display = "none";
-  }
-
-  window.onclick = function(event) {
-      if (event.target === popup) {
-          popup.style.display = "none";
-      }
-  }
-};
 
 
 
