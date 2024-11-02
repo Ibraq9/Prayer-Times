@@ -389,9 +389,3 @@ function time_correction(time){
 
   return timeCorrection;
 }
-
-
-
-
-
-
