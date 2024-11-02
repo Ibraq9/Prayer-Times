@@ -95,7 +95,7 @@ window.onload = function() {
 
 
 
-let toggle = false;  // Initial state
+let toggle = false;  
 
 mood.addEventListener("click", function() {
   if (toggle) {
@@ -197,7 +197,6 @@ Country_select.addEventListener("change", (event) => {
 
 
 
-
 function get_prayer_times() {
   let country1 = Country_select.value;
   let city1 = city_select.value;
@@ -211,8 +210,8 @@ function get_prayer_times() {
   fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city1}&country=${country1}`)
     .then(response => response.json())
     .then(data => {
-     
       let times = data.data.timings;
+     
 
       if (check_lang === "arabic") {
         fagr_name.innerHTML = "الفجر";
@@ -245,8 +244,7 @@ function get_prayer_times() {
       // Set date
       date_.innerHTML = `${data.data.date.hijri.date} - ${data.data.date.readable}`;
     })
-    .catch(error => console.error("Error fetching prayer times:", error));
-
+   
   countryCityDiv.style.display = "none";
 }
 
@@ -303,8 +301,6 @@ function Arabic(){
  prayer_times_dis.innerHTML="مواقيت الصلاة"
  for_dis.style.display="none";
 
- nextPrayer.innerHTML="الوقت المتبقي على صلاة : "
- reminig_time.dir="rtl"
 }
 
 
@@ -353,8 +349,11 @@ function English() {
 
 
 
-let pmAM="";
+
+
 function time_correction(time){
+
+  let pmAM="";
 
   let splitsign=time.split(":");
   let hour= +splitsign[0];
@@ -386,7 +385,13 @@ function time_correction(time){
     hour =12;
   }
 
- let timeCorrection=`${hour}:${minute} <small>${pmAM}</small>`
+ let timeCorrection=`${hour}:${minute} ${pmAM}`
 
   return timeCorrection;
 }
+
+
+
+
+
+
