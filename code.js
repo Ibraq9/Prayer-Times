@@ -30,7 +30,6 @@ let date_=document.getElementById("date-");
 let title=document.getElementById("title");
 
 //descriptipn
-let Muslims_website_dis=document.getElementById("Muslims-website-dis");
 let for_dis=document.getElementById("for-dis");
 let prayer_times_dis=document.getElementById("prayer-times-dis");
 
@@ -277,7 +276,6 @@ function Arabic(){
  prayer_times.innerHTML="مواقيت الصلاة";
  
 
- Muslims_website_dis.innerHTML="موقع مسلمون"
  prayer_times_dis.innerHTML="مواقيت الصلاة"
 
  for_dis.style.display="none";
@@ -294,13 +292,7 @@ function Arabic(){
  maghrib_name.innerHTML="المغرب"
  isha_name.innerHTML="العشاء"
 
-
- main.dir="rtl";
-
- Muslims_website_dis.innerHTML="موقع مسلمون"
  prayer_times_dis.innerHTML="مواقيت الصلاة"
- for_dis.style.display="none";
-
 }
 
 
@@ -326,7 +318,6 @@ function English() {
   title.innerHTML = "Muslims";
   prayer_times.innerHTML = "Prayer Times";
   
-  Muslims_website_dis.innerHTML = "Muslims Website";
   prayer_times_dis.innerHTML = "Prayer times";
 
   fagr_name.innerHTML="Fagr"
