@@ -242,6 +242,7 @@ function get_prayer_times() {
 
       // Set date
       date_.innerHTML = `${data.data.date.hijri.date} - ${data.data.date.readable}`;
+      calculateRemainingTime(times);
     })
    
   countryCityDiv.style.display = "none";
@@ -379,4 +380,51 @@ function time_correction(time){
  let timeCorrection=`${hour}:${minute} ${pmAM}`
 
   return timeCorrection;
+}
+
+
+
+
+
+function calculateRemainingTime(prayerTimes) {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+
+  const prayerTimesInMinutes = [
+      { name: "Fajr", time: prayerTimes.Fajr },
+      { name: "Sunrise", time: prayerTimes.Sunrise },
+      { name: "Dhuhr", time: prayerTimes.Dhuhr },
+      { name: "Asr", time: prayerTimes.Asr },
+      { name: "Maghrib", time: prayerTimes.Maghrib },
+      { name: "Isha", time: prayerTimes.Isha }
+  ];
+
+  
+  for (let i = 0; i < prayerTimesInMinutes.length; i++) {
+      const [hour, minute] = prayerTimesInMinutes[i].time.split(':').map(Number);
+      if (hour > currentHour || (hour === currentHour && minute > currentMinute)) {
+          const remainingMinutes = (hour * 60 + minute) - (currentHour * 60 + currentMinute);
+          showRemainingTime(prayerTimesInMinutes[i].name, remainingMinutes);
+          return;
+      }
+  }
+
+  // If no prayer time is left for today, show the first prayer time of the next day
+  const [nextPrayerHour, nextPrayerMinute] = prayerTimesInMinutes[0].time.split(':').map(Number);
+  const remainingMinutes = (24 * 60) - (currentHour * 60 + currentMinute) + (nextPrayerHour * 60 + nextPrayerMinute);
+  showRemainingTime(prayerTimesInMinutes[0].name, remainingMinutes);
+}
+
+let message=``;
+function showRemainingTime(prayerName, remainingMinutes) {
+  const hours = Math.floor(remainingMinutes / 60);
+  const minutes = remainingMinutes % 60;
+
+  message = `Time remaining for ${prayerName}: ${hours > 0 ? hours + ' hour(s) ' : ''}${minutes} minute(s)`;
+
+  reminig_time.innerHTML = message;
+  reminig_time.style.color = "orange"; 
+  reminig_time.style.fontSize = "24px"; 
+  reminig_time.style.fontWeight = "bold"; 
 }
